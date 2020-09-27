@@ -22,7 +22,7 @@ function main(city) {
                     appid: '6b86ee37e1608d9a2c8bf38b2b9d2d22',
                 },
             });
-            return console.log(weather);
+            return console.log(weather.data);
         }
         catch (err) {
             console.log(err);

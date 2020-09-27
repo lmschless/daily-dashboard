@@ -1,13 +1,20 @@
-import express from 'express';
+import axios from 'axios';
 
-const app = express();
-const port = 3000;
-app.get('/', (req, res) => {
-  res.send('The sedulous hyena ate the antelope!');
-});
-app.listen(port, (err) => {
-  if (err) {
-    return console.error(err);
+async function main(city: string): Promise<any> {
+  try {
+    const weather = await axios.get(
+      'https://api.openweathermap.org/data/2.5/weather',
+      {
+        params: {
+          q: city,
+          appid: '6b86ee37e1608d9a2c8bf38b2b9d2d22',
+        },
+      }
+    );
+    return console.log(weather.data);
+  } catch (err) {
+    console.log(err);
   }
-  return console.log(`server is listening on ${port}`);
-});
+}
+
+main('portland');

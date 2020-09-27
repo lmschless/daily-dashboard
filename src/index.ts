@@ -1,4 +1,7 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: './config.env' }); // have to import dotenv before app
 
 async function main(city: string): Promise<any> {
   try {
@@ -7,7 +10,7 @@ async function main(city: string): Promise<any> {
       {
         params: {
           q: city,
-          appid: '6b86ee37e1608d9a2c8bf38b2b9d2d22',
+          appid: process.env.WEATHER_API_KEY,
         },
       }
     );
